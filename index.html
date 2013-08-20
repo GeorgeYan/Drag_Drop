@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>drag&drop</title>
+    <link rel="stylesheet" href="assets/css/dragdrop.css">
+    <link rel="stylesheet" href="assets/css/bootstrap3.css">
+</head>
+<body>
+<div>
+    <li style="margin-top:10px;">
+        <button class="btn" id="remove-selected">删除图片</button>
+        <div class="tab-pane" id="load-svg-pane" style="float: right">
+            <textarea id="svg-console" style="size:auto;width: 500px;height: 240px;max-width: 600px;max-height: 400px;">
+                &lt;?xml version="1.0" standalone="no"?>
+                &lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+                "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+                &lt;svg width="100%" height="100%" version="1.1"
+                xmlns="http://www.w3.org/2000/svg">
+
+                &lt;rect width="300" height="100"
+                style="fill:rgb(0,0,255);stroke-width:1;stroke:rgb(0,0,0)"/>
+                &lt;/svg>
+            </textarea>
+            <button type="button" class="btn btn-info" id="load-svg">Load</button>
+            <button type="button" class="btn" id="load-svg-without-grouping">Load without grouping</button>
+        </div>
+    </li>
+    <li style="margin-top:10px;">
+        <button class="btn" id="add-text">加入文字</button>
+        <button class="btn btn-info" id="selected-forward">图片上升一层</button>
+        <button class="btn btn-info" id="selected-tofront">图片置顶</button>
+    </li>
+    <li style="margin-top: 10px">
+          保存转化为：
+        <button class="btn btn-success" id="rasterize">Image</button>
+        <button class="btn btn-success" id="rasterize-svg">SVG</button>
+        <button class="btn btn-success" id="rasterize-json">JSON</button>
+    </li>
+
+</div>
+
+<div id="images">
+    <img draggable="true" src="assets/img/high_tatras2.jpg" width="100" height="100">
+    <img draggable="true" src="assets/img/high_tatras3.jpg" width="100" height="100">
+    <img draggable="true" src="assets/img/high_tatras4.jpg" width="100" height="100">
+</div>
+
+<div id="canvas-container">
+    <canvas id="canvas" width="800" height="600"></canvas>
+</div>
+
+<div id="controls" style="display: none"></div>
+
+<div id="text-wrapper" style="margin-top: 10px; display: none">
+    <textarea id="text"></textarea>
+    <div id="text-controls">
+        <label for="font-family" style="display:inline-block">Font family:</label>
+        <select id="font-family">
+            <option value="arial">Arial</option>
+            <option value="helvetica" selected>Helvetica</option>
+            <option value="myriad pro">Myriad Pro</option>
+            <option value="delicious">Delicious</option>
+            <option value="verdana">Verdana</option>
+            <option value="georgia">Georgia</option>
+            <option value="courier">Courier</option>
+            <option value="comic sans ms">Comic Sans MS</option>
+            <option value="impact">Impact</option>
+            <option value="monaco">Monaco</option>
+            <option value="optima">Optima</option>
+            <option value="hoefler text">Hoefler Text</option>
+            <option value="plaster">Plaster</option>
+            <option value="engagement">Engagement</option>
+        </select>
+        <br>
+        <label for="text-align" style="display:inline-block">Text align:</label>
+        <select id="text-align">
+            <option>Left</option>
+            <option>Center</option>
+            <option>Right</option>
+            <option>Justify</option>
+        </select>
+        <div><label for="text-bg-color">Background color:</label><input type="color" value="" id="text-bg-color" size="10"></div>
+        <div><label for="text-lines-bg-color">Background text color:</label><input type="color" value="" id="text-lines-bg-color" size="10"></div>
+        <div><label for="text-stroke-color">Stroke color:</label><input type="color" value="" id="text-stroke-color"></div>
+        <div><label for="text-stroke-width">Stroke width:</label><input type="range" value="1" min="1" max="5" id="text-stroke-width"></div>
+        <div><label for="text-font-size">Font size:</label><input type="range" value="" min="1" max="120" step="1" id="text-font-size"></div>
+        <div><label for="text-line-height">Line height:</label><input type="range" value="" min="0" max="10" step="0.1" id="text-line-height"></div>
+    </div>
+    <div id="text-controls-additional">
+        <button type="button" class="btn" id="text-cmd-bold">Bold</button>
+        <button type="button" class="btn" id="text-cmd-italic">Italic</button>
+        <button type="button" class="btn" id="text-cmd-underline">Underline</button>
+        <button type="button" class="btn" id="text-cmd-linethrough">Linethrough</button>
+        <button type="button" class="btn" id="text-cmd-overline">Overline</button>
+        <button type="button" class="btn" id="text-cmd-shadow">Shadow</button>
+    </div>
+
+</div>
+<!--<script src="assets/js/jquery.js"></script>-->
+<script src="assets/js/fabric-min.js"></script>
+<script src="assets/js/modernizr-min.js"></script>
+<script src="assets/js/dragdrop.js"></script>
+<!--<script src="assets/js/font_definitions.js"></script>-->
+</body>
+</html>

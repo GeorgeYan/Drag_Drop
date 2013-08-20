@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/css/bootstrap3.css">
+    <link rel="stylesheet" href="assets/css/dragdrop_backup.css">
+    <link href='http://fonts.googleapis.com/css?family=Plaster' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Engagement' rel='stylesheet' type='text/css'>
+
+    <title>Drag&Drop Demos</title>
+    <style>
+        pre { margin-left: 15px !important }
+    </style>
+
+    <script src="assets/js/fabric.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <!--[if IE]>
+    <script src="assets/lib/fonts/Delicious.font_definitions.js"></script>
+    <![endif]-->
+
+    <script src="assets/js/jquery-ui.js"></script>
+    <script src="assets/js/bootstrap3.js"></script>
+</head>
+<body>
+
+<script>
+    (function() {
+
+        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+        s.async = true;
+        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+        t.parentNode.insertBefore(s, t);
+
+        if (document.location.hostname === 'localhost') {
+            var links = document.getElementById('header').getElementsByTagName('a');
+            for (var i = 0, len = links.length; i < len; i++) {
+                // very retarted fix but fuck it
+                links[i].href = links[i].href.replace('fabricjs.com', 'localhost:4000');
+            }
+        }
+    })();
+</script>
+
+
+<div id="bd-wrapper">
+<h2><span>Drag&Drop demos</span> &middot; </h2>
+
+<div style="position:relative;width:704px;float:left;" id="canvas-wrapper">
+    <div id="complexity">画板:<strong></strong></div>
+    <div id="canvas-background"><label for="canvas-background-picker">画板背景 :</label><input type="color" id="canvas-background-picker"></div>
+    <canvas id="canvas" width="700" height="600"></canvas>
+
+    <div id="controls" style="display: none"></div>
+
+    <div id="text-wrapper" style="margin-top: 10px; display: none">
+        <textarea id="text"></textarea>
+        <div id="text-controls">
+            <label for="font-family" style="display:inline-block">Font family:</label>
+            <select id="font-family">
+                <option value="arial">Arial</option>
+                <option value="helvetica" selected>Helvetica</option>
+                <option value="myriad pro">Myriad Pro</option>
+                <option value="delicious">Delicious</option>
+                <option value="verdana">Verdana</option>
+                <option value="georgia">Georgia</option>
+                <option value="courier">Courier</option>
+                <option value="comic sans ms">Comic Sans MS</option>
+                <option value="impact">Impact</option>
+                <option value="monaco">Monaco</option>
+                <option value="optima">Optima</option>
+                <option value="hoefler text">Hoefler Text</option>
+                <option value="plaster">Plaster</option>
+                <option value="engagement">Engagement</option>
+            </select>
+            <br>
+            <label for="text-align" style="display:inline-block">Text align:</label>
+            <select id="text-align">
+                <option>Left</option>
+                <option>Center</option>
+                <option>Right</option>
+                <option>Justify</option>
+            </select>
+            <div><label for="text-bg-color">Background color:</label><input type="color" value="" id="text-bg-color" size="10"></div>
+            <div><label for="text-lines-bg-color">Background text color:</label><input type="color" value="" id="text-lines-bg-color" size="10"></div>
+            <div><label for="text-stroke-color">Stroke color:</label><input type="color" value="" id="text-stroke-color"></div>
+            <div><label for="text-stroke-width">Stroke width:</label><input type="range" value="1" min="1" max="5" id="text-stroke-width"></div>
+            <div><label for="text-font-size">Font size:</label><input type="range" value="" min="1" max="120" step="1" id="text-font-size"></div>
+            <div><label for="text-line-height">Line height:</label><input type="range" value="" min="0" max="10" step="0.1" id="text-line-height"></div>
+        </div>
+        <div id="text-controls-additional">
+            <button type="button" class="btn" id="text-cmd-bold">Bold</button>
+            <button type="button" class="btn" id="text-cmd-italic">Italic</button>
+            <button type="button" class="btn" id="text-cmd-underline">Underline</button>
+            <button type="button" class="btn" id="text-cmd-linethrough">Linethrough</button>
+            <button type="button" class="btn" id="text-cmd-overline">Overline</button>
+            <button type="button" class="btn" id="text-cmd-shadow">Shadow</button>
+        </div>
+    </div>
+</div>
+
+<!-- <script src="../../lib/centering_guidelines.js"></script>
+<script src="../../lib/aligning_guidelines.js"></script> -->
+<div id="commands">
+<img id="draggable" src="assets/img/high_tatras2.jpg" class="btn image1">
+    <button type="button"  class="btn image1">Image 1 (sofa)</button>
+</div>
+
+</div>
+<script src="assets/lib/font_definitions.js"></script>
+<script src="assets/js/dragdrop_backup.js"></script>
+<script>
+    $(function() {
+        $( "#draggable" ).draggable({ revert: "invalid" });
+        $( "#canvas" ).droppable();
+    });
+</script>
+<script>
+    (function(){
+        var mainScriptEl = document.getElementById('main');
+        if (!mainScriptEl) return;
+        var preEl = document.createElement('pre');
+        var codeEl = document.createElement('code');
+        codeEl.innerHTML = mainScriptEl.innerHTML;
+        codeEl.className = 'language-javascript';
+        preEl.appendChild(codeEl);
+        document.getElementById('bd-wrapper').appendChild(preEl);
+    })();
+</script>
+</body>
+</html>
